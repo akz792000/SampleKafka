@@ -48,4 +48,9 @@ public class KafkaProducerConfig {
         return new KafkaTemplate<>(greetingProducerFactory());
     }
 
+    @Bean
+    public MessageProducer messageProducer() {
+        return new MessageProducer();
+    }
+
 }

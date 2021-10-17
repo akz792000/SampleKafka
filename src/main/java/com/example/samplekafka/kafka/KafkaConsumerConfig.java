@@ -55,11 +55,6 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> partitionsKafkaListenerContainerFactory() {
-        return kafkaListenerContainerFactory("partitions");
-    }
-
-    @Bean
     public ConcurrentKafkaListenerContainerFactory<String, String> longMessageKafkaListenerContainerFactory() {
         return kafkaListenerContainerFactory("longMessage");
     }
@@ -70,6 +65,11 @@ public class KafkaConsumerConfig {
         factory.setRecordFilterStrategy(record -> record.value()
                 .contains("World"));
         return factory;
+    }
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, String> partitionsKafkaListenerContainerFactory() {
+        return kafkaListenerContainerFactory("partitions");
     }
 
     public ConsumerFactory<String, Greeting> greetingConsumerFactory() {
@@ -84,6 +84,11 @@ public class KafkaConsumerConfig {
         ConcurrentKafkaListenerContainerFactory<String, Greeting> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(greetingConsumerFactory());
         return factory;
+    }
+
+    @Bean
+    public MessageListener messageListener() {
+        return new MessageListener();
     }
 
 }
