@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @EnableKafka
-//@Configuration
+@Configuration
 public class KafkaTopicConfig {
 
     public static final int SIMPLE_NUM_PARTITION = 4;
