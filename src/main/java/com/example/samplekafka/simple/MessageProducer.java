@@ -20,9 +20,9 @@ public class MessageProducer {
         for (int i = 0; i < KafkaTopicConfig.SIMPLE_NUM_PARTITION; i++) {
             int partition = i;
             kafkaTemplate
-                    // default is partition 0
-                    //.send(simpleName, message)
-                    .send(simpleName, partition, null, message)
+                    // random partition as default
+                    .send(simpleName, message)
+                    //.send(simpleName, partition, null, message)
                     .addCallback(new ListenableFutureCallback<>() {
 
                         @Override
