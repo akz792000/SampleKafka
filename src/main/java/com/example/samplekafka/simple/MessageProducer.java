@@ -21,8 +21,8 @@ public class MessageProducer {
             int partition = i;
             kafkaTemplate
                     // random partition as default
-                    .send(simpleName, message)
-                    //.send(simpleName, partition, null, message)
+                    //.send(simpleName, message)
+                    .send(simpleName, partition, null, message)
                     .addCallback(new ListenableFutureCallback<>() {
 
                         @Override
